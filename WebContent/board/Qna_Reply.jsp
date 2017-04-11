@@ -18,7 +18,7 @@
 	try{
 	    Class.forName("org.mariadb.jdbc.Driver");	    
 	    
-		conn = DriverManager.getConnection("jdbc:mariadb://localhost:3308/qna_content","BCNS","****");
+		conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/qna_content","BCNS","****");
 	
 		pstmt = conn.prepareStatement("SELECT ID, CONTENT FROM reple WHERE CONECTNUM = " + page_num + "");
 		

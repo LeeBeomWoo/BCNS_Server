@@ -16,7 +16,7 @@
 	try{
 	    Class.forName("org.mariadb.jdbc.Driver");
 	    
-		conn = DriverManager.getConnection("jdbc:mariadb://localhost:3308/bcns_beta","BCNS","****");
+		conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/bcns_beta","BCNS","****");
 	
 		pstmt = conn.prepareStatement("SELECT ID, TITLE, CONTENT, IMAGE, CNCD, OUTCATEGORY FROM body_list WHERE CATEGORY ='" + category +"'");
 		

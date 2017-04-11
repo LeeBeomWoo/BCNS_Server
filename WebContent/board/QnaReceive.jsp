@@ -20,9 +20,9 @@ int page_num;
 String pagecount;
 	
 	try{
-	    	wrconn = DriverManager.getConnection("jdbc:mariadb://localhost:3308/qna_content", "BCNS","****");	    
+	    	wrconn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/qna_content", "BCNS","****");	    
 
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3308/bcns_beta","BCNS","****");
+			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/bcns_beta","BCNS","****");
 			
 			wrtmt = wrconn.prepareStatement("insert into main (CONTENT, ID, TITLE, PASSWORD) values (?, ?, ?, ?)", PreparedStatement.RETURN_GENERATED_KEYS);
 			wrtmt.setString(1, qnaitem);

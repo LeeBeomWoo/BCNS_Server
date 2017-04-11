@@ -20,7 +20,7 @@
 		
 		Class.forName("org.mariadb.jdbc.Driver");
 	    
-		conn = DriverManager.getConnection("jdbc:mariadb://localhost:3308/qna_content?allowMultiQueries=true","BCNS","****");
+		conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/qna_content?allowMultiQueries=true","BCNS","****");
 	
 		pstmt = conn.prepareStatement("SELECT ID, TITLE, CONTENT FROM main WHERE Num =" + page_num +"");
 		

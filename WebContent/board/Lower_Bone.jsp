@@ -15,7 +15,7 @@
 	try{
 	    Class.forName("org.mariadb.jdbc.Driver");
 	    
-		conn = DriverManager.getConnection("jdbc:mariadb://localhost:3308/bcns_beta","BCNS","****");
+		conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/bcns_beta","BCNS","****");
 	
 		pstmt = conn.prepareStatement("SELECT ID, TITLE, IMAGE FROM lower_bone");
 		
@@ -25,15 +25,15 @@
 		while(rs.next()){
 			JSONObject temp = new JSONObject();
 			
-			temp.put("bd_Id", rs.getString(1));
-			temp.put("bd_Title", rs.getString(2));
-			temp.put("bd_ImageUrl", rs.getString(4));
+			temp.put("ld_Id", rs.getString(1));
+			temp.put("ld_Title", rs.getString(2));
+			temp.put("ld_ImageUrl", rs.getString(3));
 			childJson.add(inum, temp);
 			
 			inum++;
 		}
 		
-		rootJson.put("bdItem", childJson);
+		rootJson.put("ldItem", childJson);
 		rootJson.put("result", "OK");
 	}catch(SQLException e){
 		System.out.println(e);

@@ -43,7 +43,7 @@
 	try{
 	    Class.forName("org.mariadb.jdbc.Driver");
 	    
-	    conn = DriverManager.getConnection("jdbc:mariadb://localhost:3308/bcns_beta","BCNS","****");
+	    conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/bcns_beta","BCNS","****");
 	
 		pstmt = conn.prepareStatement("UPDATE trainer SET ID=?, NAME=?, NICKNAME=?, PASSWORD=?, AGE=?, ADDRESS=?, EMAIL=?, PHONE=?, SEX=?, HOMEPAGE=?, FACEPHOTO=?, BODYPHOTO=?, PERMISSION=?," +
 										"CALL_OP=?, EMAIL_OP=?, Li_NAME=?, LI_ASSOCIATION=?, LI_IMAGE=?, LI_1_NAME=?, LI_1_ASSOCIATION=?, LI_1_IMAGE=?, AW_NAME, AW_ASSOCIATION, AW_IMAGE, AW_1_NAME, AW_1_ASSOCIATION, AW_1_IMAGE, Section) " +
