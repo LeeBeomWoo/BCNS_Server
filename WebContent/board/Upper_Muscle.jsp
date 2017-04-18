@@ -17,7 +17,7 @@
 	    
 		conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/bcns_beta","BCNS","****");
 	
-		pstmt = conn.prepareStatement("SELECT ID, TITLE, IMAGE FROM upper_muscle");
+		pstmt = conn.prepareStatement("SELECT ID, TITLE, IMAGE, FACEIMAGE FROM upper_muscle");
 		
 		rs = pstmt.executeQuery(); 
 		
@@ -28,6 +28,7 @@
 			temp.put("ld_Id", rs.getString(1));
 			temp.put("ld_Title", rs.getString(2));
 			temp.put("ld_ImageUrl", rs.getString(3));
+			temp.put("ld_FaceUrl", rs.getString(4));
 			childJson.add(inum, temp);
 			
 			inum++;
