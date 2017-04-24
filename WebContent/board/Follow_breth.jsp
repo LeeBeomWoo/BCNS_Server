@@ -29,6 +29,7 @@
 			temp.put("ld_Title", rs.getString(2));
 			temp.put("ld_ImageUrl", rs.getString(3));
 			temp.put("ld_FaceUrl", rs.getString(4));
+			temp.put("ld_Section", "Follow");
 			
 			childJson.add(inum, temp);
 			
