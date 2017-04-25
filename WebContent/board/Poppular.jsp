@@ -16,7 +16,7 @@ String table = request.getParameter("table");
 	try{
 	    Class.forName("org.mariadb.jdbc.Driver");
 	    
-		conn = DriverManager.getConnection("jdbc:mariadb://localhost:3308/bcns_beta","BCNS","****");
+		conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/bcns_beta","BCNS","****");
 	
 		pstmt = conn.prepareStatement("SELECT  ID, TITLE, IMAGE, FACEIMAGE FROM '" + table + "'  ORDER BY POPPULAR DESC");
 		
