@@ -35,7 +35,7 @@
 		bpstmt.setString(8, hope);
 		brs = bpstmt.executeQuery(); 
 		
-		rootJson.put("result", "OK");
+		rootJson.put("id", "OK");
 	}catch(SQLException e){
 		System.out.println(e);
 		rootJson.put("result", "ERROR1");
