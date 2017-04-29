@@ -46,12 +46,18 @@
 			}catch(Exception e){
 				rootJson.put("result", "ERROR3");
 			}
+		}if(spstmt != null){
+			try{ 
+				spstmt.close();
+			}catch(Exception e){
+				rootJson.put("result", "ERROR4");
+			}
 		}
 		if(conn != null){
 			try{ 
 				conn.close();
 			}catch(Exception e){
-				rootJson.put("result", "ERROR4");
+				rootJson.put("result", "ERROR5");
 			}
 		}
 	}
