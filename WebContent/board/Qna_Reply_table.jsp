@@ -25,7 +25,7 @@ StringBuffer sql = new StringBuffer();
 	    conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/qna_content", "BCNS","****");
 	    if (conn == null)
 	        throw new Exception("데이터베이스에 연결할 수 없습니다.");
-	    stmt = conn.prepareStatement("insert into reple (CONTENT, ID, CONECTNUM) values (?, ?, ?)");
+	    	stmt = conn.prepareStatement("insert into reple (CONTENT, ID, CONECTNUM) values (?, ?, ?)");
 	    	stmt.setString(1, qnaitem);
 	    	stmt.setString(2, writer);
 	    	stmt.setInt(3, page_num);

@@ -5,11 +5,15 @@
 <%@page import="org.json.simple.JSONObject"%>
 
 <%
+	String table = request.getParameter("table");
+	String userid = request.getParameter("userid");
+	int sourcid = request.getIntHeader("sourcid");
 	JSONObject rootJson = new JSONObject();
 	JSONArray childJson = new JSONArray();
 
 	Connection conn = null;
 	PreparedStatement pstmt = null;
+	PreparedStatement spstmt = null;
 	ResultSet rs;
 	
 	try{
@@ -17,26 +21,17 @@
 	    
 		conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/bcns_beta","BCNS","****");
 	
-		pstmt = conn.prepareStatement("SELECT ID, TITLE, IMAGE, FACEIMAGE, POPPULAR FROM selfmassage");
+		pstmt = conn.prepareStatement("insert into poppular ('" + table + "', USERID) values (?, ?)");
+
+		pstmt.setInt(1, sourcid);
+		pstmt.setString(2, userid);
 		
-		rs = pstmt.executeQuery(); 
+		pstmt.executeUpdate(); 
 		
-		int inum = 0;
-		while(rs.next()){
-			JSONObject temp = new JSONObject();
-			
-			temp.put("ld_Id", rs.getString(1));
-			temp.put("ld_Title", rs.getString(2));
-			temp.put("ld_ImageUrl", rs.getString(3));
-			temp.put("ld_FaceUrl", rs.getString(4));
-			temp.put("ld_Pop", rs.getInt(5));
-			
-			childJson.add(inum, temp);
-			
-			inum++;
-		}
+		spstmt = conn.prepareStatement("update '" + table + "'set POPPULAR = (select count (*) from poppular where poppular.'" + table + "' = '" + sourcid + "')");
+		spstmt.executeUpdate();
 		
-		rootJson.put("ldItem", childJson);
+		
 		rootJson.put("result", "OK");
 	}catch(SQLException e){
 		System.out.println(e);
