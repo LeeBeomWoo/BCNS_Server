@@ -17,7 +17,7 @@
 	    
 		conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/bcns_beta","BCNS","****");
 	
-		pstmt = conn.prepareStatement("SELECT ID, TITLE, IMAGE, FACEIMAGE, POPPULAR, FROM upper_muscle");
+		pstmt = conn.prepareStatement("SELECT ID, TITLE, IMAGE, FACEIMAGE, POPPULAR FROM upper_muscle");
 		
 		rs = pstmt.executeQuery(); 
 		
