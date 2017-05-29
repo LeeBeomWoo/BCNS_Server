@@ -30,6 +30,7 @@
 			temp.put("ld_ImageUrl", rs.getString(3));
 			temp.put("ld_FaceUrl", rs.getString(4));
 			temp.put("ld_Pop", rs.getInt(5));
+			temp.put("ld_Video", rs.getString(6));
 			temp.put("ld_Section", "Body");
 			childJson.add(inum, temp);
 			
