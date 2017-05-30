@@ -18,7 +18,7 @@ String table = request.getParameter("table");
 	    
 		conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/bcns_beta","BCNS","****");
 	
-		pstmt = conn.prepareStatement("SELECT  ID, NICKNAME, IMAGE, FACEIMAGE FROM trainer WHERE DATE > DATE_SUB(DATE(NOW()), INTERVAL DAYOFWEEK(NOW())+6 DAY) AND DATE <= DATE_SUB(DATE(NOW()), INTERVAL DAYOFWEEK(NOW())-1 DAY)");
+		pstmt = conn.prepareStatement("SELECT  ID, TITLE, IMAGE, FACEIMAGE FROM '" + table + "'  ORDER BY POPPULAR DESC");
 		
 		rs = pstmt.executeQuery(); 
 		

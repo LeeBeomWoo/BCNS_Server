@@ -28,7 +28,7 @@
 		connli = DriverManager.getConnection("jdbc:mariadb://localhost:3308/License","BCNS","****");
 		connaw = DriverManager.getConnection("jdbc:mariadb://localhost:3308/Award","BCNS","****");
 	
-		pstmt = conn.prepareStatement("SELECT ASSOCIATION, EMAIL, PHONE, PHOTOURL, NICKNAME FROM trainer WHERE ID ='" + id +"'");
+		pstmt = conn.prepareStatement("SELECT ASSOCIATION, EMAIL, INTRODUCE, PHONE, PHOTOURL, NICKNAME FROM trainer WHERE ID ='" + id +"'");
 		pstmtli = connli.prepareStatement("SELECT CHECK, ASSOCIATION, NAME FROM '" + id +"'_license ");
 		pstmtli = connaw.prepareStatement("SELECT CHECK, ASSOCIATION, NAME FROM '" + id +"'_award ");
 		rs = pstmt.executeQuery(); 
@@ -37,9 +37,10 @@
 
 		rootJson.put("association", rs.getString(1));
 		rootJson.put("email", rs.getString(2));
-		rootJson.put("phone", rs.getString(3));
-		rootJson.put("photoUrl", rs.getString(4));
-		rootJson.put("nickname", rs.getString(5));
+		rootJson.put("Introduce", rs.getString(3));
+		rootJson.put("call", rs.getString(4));
+		rootJson.put("ImageUrl", rs.getString(5));
+		rootJson.put("nickname", rs.getString(6));
 		
 		int li = 0;
 		while(rsli.next()){
@@ -66,8 +67,8 @@
 			aw++;
 		}
 				
-		rootJson.put("award", childJsonaw);
-		rootJson.put("license", childJsonli);
+		rootJson.put("awList", childJsonaw);
+		rootJson.put("liList", childJsonli);
 		rootJson.put("result", "OK");
 	}catch(SQLException e){
 		System.out.println(e);
