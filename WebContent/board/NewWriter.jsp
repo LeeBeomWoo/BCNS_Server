@@ -18,7 +18,7 @@ String table = request.getParameter("table");
 	    
 		conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/bcns_beta","BCNS","****");
 	
-		pstmt = conn.prepareStatement("SELECT  ID, NICKNAME, IMAGE, FACEIMAGE FROM trainer WHERE DATE > DATE_SUB(DATE(NOW()), INTERVAL DAYOFWEEK(NOW())+6 DAY) AND DATE <= DATE_SUB(DATE(NOW()), INTERVAL DAYOFWEEK(NOW())-1 DAY)");
+		pstmt = conn.prepareStatement("SELECT  ID, NICKNAME, CATEGORY, FACEIMAGE, INTRODUCE FROM trainer WHERE DATE > DATE_SUB(DATE(NOW()), INTERVAL DAYOFWEEK(NOW())+6 DAY) AND DATE <= DATE_SUB(DATE(NOW()), INTERVAL DAYOFWEEK(NOW())-1 DAY)");
 		
 		rs = pstmt.executeQuery(); 
 		
@@ -27,9 +27,10 @@ String table = request.getParameter("table");
 			JSONObject temp = new JSONObject();
 
 			temp.put("ld_Id", rs.getString(1));
-			temp.put("ld_Title", rs.getString(2));
-			temp.put("ld_ImageUrl", rs.getString(3));
-			temp.put("ld_FaceUrl", rs.getString(4));
+			temp.put("nickName", rs.getString(2));
+			temp.put("sEction", rs.getString(3));
+			temp.put("ImageUrl", rs.getString(4));
+			temp.put("Introduce", rs.getString(5));
 			
 			childJson.add(inum, temp);
 			
