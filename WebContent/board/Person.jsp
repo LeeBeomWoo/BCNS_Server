@@ -17,7 +17,7 @@
 	try{
 	    Class.forName("org.mariadb.jdbc.Driver");
 	    
-		conn = DriverManager.getConnection("jdbc:mariadb://localhost:3308/bcns_beta","BCNS","****");
+		conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/bcns_beta","BCNS","****");
 	
 		bpstmt = conn.prepareStatement("SELECT NICKNAME, FACEPHOTO, CATEGORY FROM trainer WHERE SECTION ='" + "0" +"'");
 		fpstmt = conn.prepareStatement("SELECT NICKNAME, FACEPHOTO, CATEGORY FROM trainer WHERE SECTION ='" + "1" +"'");
